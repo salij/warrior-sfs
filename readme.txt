@@ -1,13 +1,10 @@
-NAME
-
-	warrior-sfs - A Strong Simulated Filesystem
+warrior-sfs - A Strong Simulated Filesystem
 
 DESCRIPTION
+===========
+Description text is descriptiony.
 
-	description text is descriptiony
-
-SUPPORTED COMMANDS
-
-	i - initialize the filesystem
-
-	q - quits the current session
+Supported Commands
+==================
+i - initialize the filesystem
+q - quits the current session
