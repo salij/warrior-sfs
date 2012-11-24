@@ -26,7 +26,7 @@ assets: \
 		assets/get_type.o \
 		assets/globals.o \
 		assets/initialize.o \
-		assets/inode.o \
+		assets/I_node.o \
 		assets/open_file.o \
 		assets/read_dir.o \
 		assets/read_file.o \
@@ -74,9 +74,9 @@ assets/initialize.o: assets/initialize.c \
 		assets.h
 	gcc -c assets/initialize.c -o assets/initialize.o
 	
-assets/inode.o: assets/inode.c assets/inode.h \
+assets/I_node.o: assets/I_node.c assets/I_node.h \
 		assets.h
-	gcc -c assets/inode.c -o assets/inode.o
+	gcc -c assets/I_node.c -o assets/I_node.o
 	
 assets/open_file.o: assets/open_file.c \
 		assets.h
@@ -115,7 +115,7 @@ tests/sfstest: tests/sfstest.o \
 		assets/get_type.o \
 		assets/globals.o \
 		assets/initialize.o \
-		assets/inode.o \
+		assets/I_node.o \
 		assets/open_file.o \
 		assets/read_dir.o \
 		assets/read_file.o \

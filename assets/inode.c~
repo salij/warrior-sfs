@@ -1,0 +1,6 @@
+#include "inode.h"
+
+int write_inode(inode i);
+inode read_inode(char* s);
+int write_itable(inode* t);
+inode* read_itable();

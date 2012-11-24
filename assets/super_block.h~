@@ -1,6 +1,4 @@
 #include <string.h>
-#include "blockio.h"
-#include "../assets.h"
 
 typedef struct {
 	char * sbBlockSize;
