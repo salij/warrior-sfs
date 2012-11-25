@@ -3,7 +3,7 @@
 int put_super_blk(Superblock superblock){
 	char * super_blk_buf;
 	char * delimiter = "|";
-	super_blk_buf = (char *) calloc(128, sizeof(char));
+	super_blk_buf = (char *) calloc(128, sizeof(char));//you forgot to free the memory afterwards
 	memcpy(super_blk_buf, superblock.sbBlockSize, sizeof(superblock.sbBlockSize));
 	strcat(super_blk_buf, delimiter);
 	strcat(super_blk_buf, superblock.sbNumberOfBlocks);
