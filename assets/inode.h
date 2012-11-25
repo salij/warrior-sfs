@@ -17,5 +17,5 @@ typedef struct{
 
 char* write_inode(inode i);
 inode read_inode(char* s);
-char* write_itable(inode* t, int t_size, int size_alloc);
-inode* read_itable(char* s);
+int write_itable(char* result, inode* t, int t_size, int size_alloc);
+int read_itable(char* s, inode* t);
