@@ -1,4 +1,6 @@
+#include <stdio.h>
 main(){
-	short s = 256;
-	char i = s;
-	printf("%d %d %d\n",1<<8*(sizeof(int)-1),1<<8*(sizeof(short))-1,1<<8*(sizeof(char))-1);}
+	short i = (1<<14) -1;
+	char a = (i/128);
+	char b = (i%128);
+	printf("%d %d %d %d\n",i,a,b,a*128+b);}

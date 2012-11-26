@@ -14,6 +14,9 @@ typedef struct {
 
 Superblock super;
 
+//this code only works with all superblock fields <=(1<<14) -1 (16383)
+//see tests/casting.c and .out for experimental work
 int init_superblock();
-int put_super_blk();
-int get_super_blk();
+int put_superblock();
+int get_superblk();
+int put_bytes(char* s, int bytes, int i);

@@ -13,14 +13,29 @@ int init_superblock(){
 			.type = 0,
 			.name = malloc(4*sizeof(char))}}
 	super.root.name = "root";
-	return put_super_block;}
+	return put_superblock();}
 
-int put_super_block(Superblock superblock){
-	char* block_buff;
-	block_buff = malloc(128 * sizeof(char));
-	
+int put_superblock(Superblock superblock){
+	char* buffer = malloc(128 * sizeof(char));
+	int i= 0;
+	i+= put_bytes(buffer,i,super.blockSize);
+	i+= put_bytes(buffer,i,super.blockCount);
+	i+= put_bytes(buffer,i,super.super_loc);
+	i+= put_bytes(buffer,i,super.openFileTable_loc);
+	i+= put_bytes(buffer,i,super.freeBlockTable_loc);
+	char* root_buffer = write_inode(super.root);
+	strcpy(
 
-int get_super_block() {
-	char* block_buff;
+int get_superblock() {
+	char* buffer = malloc(128 * sizeof(char));
 	
 }
+
+int put_bytes(char* s, int i, int bytes){
+	s[i] = bytes/128;
+	s[i+1] = bytes%128;
+	return 2;}
+
+int get_bytes(char* s, int i, int* bytes){
+	bytes = s[i]*128 + s[i+1];
+	return 2;}
