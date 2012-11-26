@@ -1,6 +1,26 @@
+/**
+*free_block_table does some stuff to some other stuff.
+*int set_free	sets block indexed by block_num to free
+*int set_used	sets block indexed by block_num to used
+*int find_free
+*int balloc
+*int bfree
+**/
 #include "free_block_table.h"
 
-int set_free(int block_num){//set the block indexed by block_num to free
+
+/**
+*@param block_num			integer, number of the block.
+*@param *block_buff		char pointer allocates memory of 128 
+*@param table_block_num	integer, set to 3
+*@param ret					integer, value of get_block on table_block_num and block_buff
+*@param loc					integer, block_num divided by 8
+*@param mod					integer, block_num mod by 8
+*@param byte				char, block_buff of location loc value
+*
+*set_free function sets the block indexed by block_num to free
+**/
+int set_free(int block_num){
 	char* block_buff = malloc(sizeof(char)*128);
 	int table_block_num = 3;
 	int ret = get_block(table_block_num,block_buff);
@@ -15,6 +35,17 @@ int set_free(int block_num){//set the block indexed by block_num to free
 	ret = put_block(table_block_num,block_buff);
 	return ret<0?ret:0;}
 
+/**
+*@param block_num			integer, number of the block.
+*@param *block_buff		char pointer allocates memory of 128 
+*@param table_block_num	integer, set to 3
+*@param ret					integer, value of get_block on table_block_num and block_buff
+*@param loc					integer, block_num divided by 8
+*@param mod					integer, block_num mod by 8
+*@param byte				char, block_buff of location loc value
+*
+*set_used function sets the block indexed by block_num to used
+**/
 int set_used(int block_num){//set the block indexed by block_num to used
 	char* block_buff = malloc(sizeof(char)*128);
 	int table_block_num = 3;
@@ -30,6 +61,20 @@ int set_used(int block_num){//set the block indexed by block_num to used
 	ret = put_block(table_block_num,block_buff);
 	return ret<0?ret:0;}
 
+/**
+*@param size
+*@param *block_buff_size	char pointer, allocated memory of size block_buff_size
+*@param table_block_num		integer, initialized to 0
+*@param ret					integer, value of get_block on table_block_num and block_buff
+*@param loc					integer, block_num divided by 8
+*@param mod					integer, block_num mod by 8
+*@param ubound				integer, the size of the block buffer size minus size in blocks +1
+*@param bit					integer, initialized to 0
+*@param n_free				integer, initialized to 0, stores number of free blocks
+*@param byte				char, block_buff of location loc value
+*
+*find_free finds free blocks in memory of system.
+**/
 int find_free(int size){//size in blocks
 	if (size<1) return -1;
 	//setup
@@ -56,14 +101,20 @@ int find_free(int size){//size in blocks
 	free(block_buff);
 	return -1;}
 
+/**
+*@param block_num		integer, value returned by find_free
+*@param *zero_block	128 bits of memory allocated for array
+*@param ret				integer, value of get_block on table_block_num and block_buff
+*
+*balloc function allocates blocks in memory for arrays.
+**/
 int balloc(int size){//allocates blocks
 	int block_num = find_free(size);
 	if (block_num<0) return block_num;
 	char* zero_block = calloc(128,sizeof(char));
 		//must be calloc, ensures zeros
-	int i;
 	int ret;
-	for( i=0; i<size; i++){
+	for(int i=0; i<size; i++){
 		ret = put_block(block_num+i,zero_block);
 		if (ret<0){
 			free(zero_block);
@@ -75,10 +126,14 @@ int balloc(int size){//allocates blocks
 	free(zero_block);
 	return block_num;}
 	
+/**
+*@param ret	integer, value of get_block on table_block_num and block_buff
+*
+*bfree function sets blocks to free
+**/
 int bfree(int block_num, int size){
-	int i;
 	int ret;
-	for(i = 0; i<size; i++){
+	for(int i = 0; i<size; i++){
 		ret = set_free(block_num + i);
 		if(ret<0) return ret;}
 	return 0;}
