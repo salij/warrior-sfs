@@ -114,7 +114,8 @@ int balloc(int size){//allocates blocks
 	char* zero_block = calloc(128,sizeof(char));
 		//must be calloc, ensures zeros
 	int ret;
-	for(int i=0; i<size; i++){
+	int i;
+	for(i=0; i<size; i++){
 		ret = put_block(block_num+i,zero_block);
 		if (ret<0){
 			free(zero_block);
@@ -133,7 +134,8 @@ int balloc(int size){//allocates blocks
 **/
 int bfree(int block_num, int size){
 	int ret;
-	for(int i = 0; i<size; i++){
+	int i;
+	for(i = 0; i<size; i++){
 		ret = set_free(block_num + i);
 		if(ret<0) return ret;}
 	return 0;}
