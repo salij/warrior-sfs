@@ -8,7 +8,7 @@ int sfs_read(int fd, int start, int length, char *mem_pointer){
     int next_blk;
     open_i_blcok[fd].file_ptr=start;
     if(open_i_blcok[fd].type) {
-        printf("Can't read from a folder file\n");
+        printf("Can't read from a file folder :P\n");
         return -1;
     }
 
