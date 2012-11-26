@@ -22,6 +22,7 @@ assets: \
 		assets/close_file.o \
 		assets/create_file.o \
 		assets/delete_file.o \
+		assets/free_block_table.o \
 		assets/get_size.o \
 		assets/get_type.o \
 		assets/globals.o \
@@ -43,8 +44,7 @@ clean-extras:
 #assets
 assets/blockio.o: assets/blockio.h assets/blockio.c \
 		assets.h
-	gcc -c assets/blockio.c \
-		-o assets/blockio.o
+	gcc -c assets/blockio.c -o assets/blockio.o
 
 assets/close_file.o: assets/close_file.c \
 		assets.h
@@ -57,6 +57,11 @@ assets/create_file.o: assets/create_file.c \
 assets/delete_file.o: assets/delete_file.c \
 		assets.h
 	gcc -c assets/delete_file.c -o assets/delete_file.o
+	
+assets/free_block_table.o: assets/free_block_table.c \
+		assets/free_block_table.h \
+		assets.h
+	gcc -c assets/free_block_table.c -o assets/free_block_table.o
 	
 assets/get_size.o: assets/get_size.c \
 		assets.h
@@ -111,6 +116,7 @@ tests/sfstest: tests/sfstest.o \
 		assets/close_file.o \
 		assets/create_file.o \
 		assets/delete_file.o \
+		assets/free_block_table.o \
 		assets/get_size.o \
 		assets/get_type.o \
 		assets/globals.o \
