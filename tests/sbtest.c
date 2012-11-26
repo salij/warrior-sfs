@@ -2,7 +2,7 @@
 #include "../assets/superblock.h"
 #include <stdio.h>
 main(){
-	/*
+	
 	int ret;
 	ret = get_superblock();
 	printf("%d %d %d %d %d %d %d %d %d %s\n",
@@ -23,17 +23,16 @@ main(){
 	super.root.size = 1,
 	super.root.type = 0,
 	super.root.name = malloc(4*sizeof(char));
-	super.root.name = "root";*/
-	
+	super.root.name = "root";
+	/*
 	int i = 511;
 	char* s = malloc(20);
-	s = "aaaaaaaa";
 	printf("%s\n",s);
 	printf("ASDF\n");
-	put_bytes(s,i);
+	put_bytes(s+2,i);
 	printf("%d %d\n",s[0],s[1]);
 	printf("%s\n",s);
 	int b;
-	get_bytes(s,0,(int*)&b);
-	printf("%d\n",b);
+	get_bytes(s+2,(int*)&b);
+	printf("%d\n",b);*/
 }

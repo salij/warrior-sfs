@@ -20,4 +20,4 @@ int init_superblock();
 int put_superblock();
 int get_superblock();
 int put_bytes(char* s, int bytes);
-int get_bytes(char* s, int i, int* bytes);
+int get_bytes(char* s, int* bytes);
