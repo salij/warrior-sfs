@@ -1,6 +1,0 @@
-#include <stdio.h>
-main(){
-	short i = (1<<14) -1;
-	char a = (char) (i/128);
-	char b = (char) (i%128);
-	printf("%d %d %d %d\n",i,a,b,a*128+b);}
