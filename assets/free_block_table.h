@@ -1,5 +1,6 @@
 #include "../assets.h"
 #include "blockio.h"
+#include "super_block.h"
 
 #define BLOCK_FREE 1
 #define BLOCK_USED 0

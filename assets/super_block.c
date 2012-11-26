@@ -1,24 +1,26 @@
 #include "super_block.h"
 
-int put_super_blk(Superblock superblock){
-	char * super_blk_buf;
-	char * delimiter = "|";
-	super_blk_buf = (char *) calloc(128, sizeof(char));//you forgot to free the memory afterwards
-	memcpy(super_blk_buf, superblock.sbBlockSize, sizeof(superblock.sbBlockSize));
-	strcat(super_blk_buf, delimiter);
-	strcat(super_blk_buf, superblock.sbNumberOfBlocks);
-	strcat(super_blk_buf, delimiter);
-	strcat(super_blk_buf, superblock.sbRootDirectory);
-	if(put_block(0, super_blk_buf) == -1)
-		return -1;
-	else
-		return 1;
-}
+int init_superblock(){
+	super = {
+		.blockSize = 128,
+		.blockCount= 512,
+		.super_loc= 0,
+		.openFileTable_loc= 1,
+		.freeBlockTable_loc= 2,
+		.root = {
+			.index = 3,
+			.size = 1,
+			.type = 0,
+			.name = malloc(4*sizeof(char))}}
+	super.root.name = "root";
+	return put_super_block;}
 
-int get_super_blk() {
-	char * super_blk_buf;
-	if(get_block(0, super_blk_buf) == -1)
-		return -1;
-	else
-		return 1;
+int put_super_block(Superblock superblock){
+	char* block_buff;
+	block_buff = malloc(128 * sizeof(char));
+	
+
+int get_super_block() {
+	char* block_buff;
+	
 }

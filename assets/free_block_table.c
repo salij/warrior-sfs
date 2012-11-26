@@ -2,7 +2,7 @@
 
 int set_free(int block_num){//set the block indexed by block_num to free
 	char* block_buff = malloc(sizeof(char)*128);
-	int table_block_num = 3;
+	int table_block_num = super.freeBlockTable_loc;
 	int ret = get_block(table_block_num,block_buff);
 	if (ret<0) return ret;
 	//find and change the bit representing the requested block
@@ -17,7 +17,7 @@ int set_free(int block_num){//set the block indexed by block_num to free
 
 int set_used(int block_num){//set the block indexed by block_num to used
 	char* block_buff = malloc(sizeof(char)*128);
-	int table_block_num = 3;
+	int table_block_num = super.freeBlockTable_loc;
 	int ret = get_block(table_block_num,block_buff);
 	if (ret<0) return ret;
 	//find and change the bit representing the requested block
@@ -28,6 +28,7 @@ int set_used(int block_num){//set the block indexed by block_num to used
 	//put the byte back into the table's block and write it
 	block_buff[loc] = byte;
 	ret = put_block(table_block_num,block_buff);
+	free(block_buff);
 	return ret<0?ret:0;}
 
 int find_free(int size){//size in blocks
@@ -35,7 +36,7 @@ int find_free(int size){//size in blocks
 	//setup
 	int block_buff_size = 128;
 	char* block_buff = malloc(sizeof(char)*block_buff_size);
-	int table_block_num = 0;
+	int table_block_num = super.freeBlockTable_loc;
 	int ret = get_block(table_block_num,block_buff);
 	if (ret<0) return ret;
 	int loc = 0;

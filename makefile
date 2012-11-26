@@ -35,6 +35,12 @@ assets: \
 		assets/write_file.o
 tests: tests/sfstest
 
+working: \
+		assets/blockio.o \
+		assets/free_block_table.o \
+		assets/globals.o \
+		assets/inode.o
+
 clean-extras:
 	rm -f tests/sfstest
 
