@@ -34,6 +34,9 @@ assets: \
 		assets/super_block.o \
 		assets/write_file.o
 tests: tests/sfstest
+tests-minor: \
+		tests/casting.out \
+		tests/shift.out
 
 working: \
 		assets/blockio.o \
@@ -109,7 +112,7 @@ assets/write_file.o: assets/write_file.c \
 		assets.h
 	gcc -c assets/write_file.c -o assets/write_file.o
 
-#tests
+#major tests
 tests/sfstest.o: tests/sfstest.c \
 		assets.h
 	gcc -c tests/sfstest.c -o tests/sfstest.o
@@ -133,3 +136,10 @@ tests/sfstest: tests/sfstest.o \
 		assets/read_file.o \
 		assets/super_block.o \
 		assets/write_file.o
+
+#minor tests
+tests/casting.out: tests/casting.c
+	gcc tests/casting.c -o tests/casting.out
+
+tests/shift.out: tests/shift.c
+	gcc tests/shift.c -o tests/shift.out

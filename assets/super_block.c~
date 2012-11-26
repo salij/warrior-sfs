@@ -24,7 +24,7 @@ int put_superblock(Superblock superblock){
 	i+= put_bytes(buffer,i,super.openFileTable_loc);
 	i+= put_bytes(buffer,i,super.freeBlockTable_loc);
 	char* root_buffer = write_inode(super.root);
-	strcpy(
+	
 
 int get_superblock() {
 	char* buffer = malloc(128 * sizeof(char));
