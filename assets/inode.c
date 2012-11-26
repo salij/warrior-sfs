@@ -1,17 +1,20 @@
-/*summary of what inode does
+/*inode reads and writes inodes and itables
 *
+*char* write_inode	converts inodes into cstrings
+*char* read_inode		converts cstrings into inodes
+*int write_itable		...
+*int read_itable		...
 */
 #include "inode.h"
 
-/*write_inode		converts indoes into cstrings
-*
+/**
 *@param i			inode to be converted
 *@param name_length	integer length of the inode's name
 *@param *result		char pointer to allocated space in memory equal to 4+name length
 *
 *The result of write_inode place the inodes index, size, type and name length into the first 4 blocks of allocated
 *memory and stores the name in the remaining blocks
-*/
+**/
 char* write_inode(inode i){//reliably converts inodes into cstrings
 	int name_length = strlen(i.name);
 	char* result = malloc((4+name_length)* sizeof(char);
