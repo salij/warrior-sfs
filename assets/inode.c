@@ -17,7 +17,7 @@
 **/
 char* write_inode(inode i){//reliably converts inodes into cstrings
 	int name_length = strlen(i.name);
-	char* result = malloc((4+name_length)* sizeof(char);
+	char* result = malloc((4+name_length)* sizeof(char));
 	result[0] = i.index;
 	result[1] = i.size;
 	result[2] = i.type;
