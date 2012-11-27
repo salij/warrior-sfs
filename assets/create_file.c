@@ -9,7 +9,7 @@ int sfs_create(char *pathname, int type){
 	//get the inode table
 	char *s[directory_inode.size];
 	s = get_block(directory);	
-	//*(s+directory_inode.size) = '\0';
+	*(s+directory_inode.size) = '\0';
 	inode *itable;
 
 	//parse the pathname?
