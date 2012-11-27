@@ -1,6 +1,9 @@
 #include "blockio.h"
 #include "../assets.h"
 
+//open file specified by pathname; if it doesn't exist, error
+//if file opens;return file descriptor(non-negative integer value) to caller
+
 int sfs_open(char *pathname){
 	  int i,j;
     char temp_f_blk[128];
