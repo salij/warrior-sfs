@@ -4,8 +4,8 @@
 /**
  *the rootof the parsing algorithm
  **/
-int parse(char* s, *inode dest);
+inode parse(char* s);
 /**
  *an iteration of the parsing algorithm
  **/
-int parse_it(char* s, *inode dest, inode i);
+inode parse_it(char* s, inode i);
