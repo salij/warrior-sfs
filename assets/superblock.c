@@ -24,6 +24,8 @@ int put_superblock(){
 	ret = put_bytes( buffer + 8, super.freeBlockTable_loc);
 	//write the root to buffer
 	char* root_buffer = write_inode(super.root);
+	printf("%s\n", root_buffer);
+	printf("%d\n", root_buffer);
 	strcat( buffer + 10, root_buffer);
 	//put superblock and clean up
 	ret = put_block( super.super_loc, buffer);
@@ -50,12 +52,3 @@ int get_superblock() {
 	super.root = read_inode( buffer + 10);
 	free( buffer);
 	return 0;}
-
-int put_bytes(char* s, int bytes){
-	s[0] = bytes/128;
-	s[1] = bytes%128;
-	return 2;}
-
-int get_bytes(char* s, int* bytes){
-	*bytes = s[0]*128 + s[1];
-	return 2;}
