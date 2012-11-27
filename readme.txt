@@ -8,4 +8,3 @@ Supported Commands
 ==================
 i - initialize the filesystem
 q - quits the current session
-o - anus
