@@ -29,6 +29,7 @@ assets: \
 		assets/initialize.o \
 		assets/inode.o \
 		assets/open_file.o \
+		assets/parsing.o \
 		assets/read_dir.o \
 		assets/read_file.o \
 		assets/superblock.o \
@@ -45,6 +46,7 @@ working: \
 		assets/free_block_table.o \
 		assets/globals.o \
 		assets/inode.o \
+		assets/parsing.o \
 		assets/superblock.o
 
 clean-extras:
@@ -100,6 +102,12 @@ assets/inode.o: assets/inode.c assets/inode.h \
 assets/open_file.o: assets/open_file.c \
 		assets.h
 	gcc -c assets/open_file.c -o assets/open_file.o
+	
+assets/parsing.o: assets/parsing.c assets/parsing.h \
+		assets/inode.h \
+		assets/superblock.h \
+		assets.h
+	gcc -c assets/parsing.c -o assets/parsing.o
 	
 assets/read_dir.o: assets/read_dir.c \
 		assets.h
