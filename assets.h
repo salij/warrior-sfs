@@ -25,8 +25,15 @@ int sfs_create(char *pathname, int type);
 int sfs_getsize(char *pathname);
 int sfs_gettype(char *pathname);
 int sfs_initialize(int erase);
+
+/**
+ * Utility Functions
+ */
+
 void initialize_globals();
 void free_globals();
+int put_bytes(char* s, int bytes);
+int get_bytes(char* s, int* bytes);
 
 /**
  * Global data structures

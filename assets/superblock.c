@@ -1,14 +1,14 @@
 #include "superblock.h"
 
 int init_superblock(){
-	super.blockSize = 128,
-	super.blockCount= 512,
-	super.super_loc= 0,
-	super.openFileTable_loc= 1,
-	super.freeBlockTable_loc= 2,
-	super.root.index = 3,
-	super.root.size = 1,
-	super.root.type = 0,
+	super.blockSize = 128;
+	super.blockCount= 512;
+	super.super_loc= 0;
+	super.openFileTable_loc= 1;
+	super.freeBlockTable_loc= 2;
+	super.root.index = 3;
+	super.root.size = 1;
+	super.root.type = 0;
 	super.root.name = malloc(4*sizeof(char));
 	super.root.name = "root";
 	return put_superblock();}
