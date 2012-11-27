@@ -24,11 +24,7 @@ char* write_inode(inode i){//reliably converts inodes into cstrings
 	put_bytes(result + 6, name_length);
 	int j;
 	for(j = 0; j<name_length; j++)
-		result[4+j] = i.name[j];
-	printf("%d %d %d %d %s\n",
-		i.index, i.size, i.type, name_length, i.name);
-	printf("%s\n", result);
-	printf("%d %d %d %d \n", result[0], result[1], result[2], result[3]);
+		result[8+j] = i.name[j];
 	return result;}
 	
 /**
@@ -50,6 +46,7 @@ inode read_inode(char* s){//reliably converts cstrings into inodes
 	int j;
 	for(j = 0; j<name_length; j++)
 		i.name[j] = s[8+j];
+	*(i.name+j) = '\0';
 	return i;}
 
 /**

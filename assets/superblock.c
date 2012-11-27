@@ -39,9 +39,10 @@ int put_superblock(){
 	ret = put_bytes( buffer + 8, super.freeBlockTable_loc);
 	//write the root to buffer
 	char* root_buffer = write_inode(super.root);
-	printf("%s\n", root_buffer);
-	printf("%d\n", root_buffer);
-	strcat( buffer + 10, root_buffer);
+	int root_name_length = strlen(super.root.name);
+	int j;
+	for(j = 0; j< 8+root_name_length;j++)
+		buffer[10+j] = root_buffer[j];
 	//put superblock and clean up
 	ret = put_block( super.super_loc, buffer);
 	free( root_buffer);
