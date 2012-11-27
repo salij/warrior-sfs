@@ -35,7 +35,8 @@ assets: \
 		assets/write_file.o
 tests: tests/sfstest
 tests-minor: \
-		tests/casting.out \
+		tests/casting.out\
+		tests/intest.out \
 		tests/sbtest.out \
 		tests/shift.out
 
@@ -158,9 +159,57 @@ tests/sbtest.o: tests/sbtest.c \
 
 tests/sbtest.out: tests/sbtest.o \
 		assets/blockio.o \
+		assets/globals.o \
 		assets/inode.o \
 		assets/superblock.o
-	gcc -o tests/sbtest.out tests/sbtest.o\
+	gcc -o tests/sbtest.out tests/sbtest.o \
 		assets/blockio.o \
+		assets/globals.o \
 		assets/inode.o \
 		assets/superblock.o
+
+tests/intest.o: tests/intest.c \
+		assets.h \
+		assets/inode.h
+	gcc -c tests/intest.c -o tests/intest.o
+
+tests/intest.out: tests/intest.o \
+		assets/globals.o \
+		assets/inode.o
+	gcc -o tests/intest.out tests/intest.o \
+		assets/globals.o \
+		assets/inode.o
+
+#codefiles
+codefiles: codefiles-assets codefiles-locals codefiles-tests
+
+codefiles-assets: \
+		assets/blockio.c \
+		assets/blockio.h \
+		assets/close_file.c \
+		assets/create_file.c \
+		assets/delete_file.c \
+		assets/free_block_table.c \
+		assets/free_block_table.h \
+		assets/get_size.c \
+		assets/get_type.c \
+		assets/globals.c \
+		assets/initialize.c \
+		assets/inode.c \
+		assets/inode.h \
+		assets/open_file.c \
+		assets/read_dir.c \
+		assets/read_file.c \
+		assets/superblock.c \
+		assets/superblock.h \
+		assets/write_file.c
+
+codefiles-locals: \
+		
+
+codefiles-tests: \
+		tests/casting.c \
+		tests/intest.c \
+		tests/sbtest.c \
+		tests/sfstest.c \
+		tests/shift.c
