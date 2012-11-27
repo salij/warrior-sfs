@@ -1,7 +1,5 @@
 #include "super_block.h"
-/**
-*
-**/
+
 int put_super_blk(Superblock superblock){
 	char * super_blk_buf;
 	char * delimiter = "|";
@@ -16,7 +14,7 @@ int put_super_blk(Superblock superblock){
 	else
 		return 1;
 }
-/****/
+
 int get_super_blk() {
 	char * super_blk_buf;
 	if(get_block(0, super_blk_buf) == -1)
